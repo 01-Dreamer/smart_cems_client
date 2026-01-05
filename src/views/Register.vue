@@ -33,6 +33,19 @@
               show-password 
             />
           </el-form-item>
+
+          <el-form-item prop="code">
+            <div style="display: flex; width: 100%; gap: 10px;">
+              <el-input 
+                v-model="registerForm.code" 
+                placeholder="邮箱验证码" 
+                prefix-icon="Message" 
+              />
+              <el-button type="primary" :disabled="isCounting" @click="handleGetCode">
+                {{ isCounting ? `${count}s后重试` : '获取验证码' }}
+              </el-button>
+            </div>
+          </el-form-item>
           
           <el-form-item>
             <el-button type="primary" :loading="loading" class="register-btn" @click="handleRegister">
@@ -53,18 +66,30 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { register } from '@/api/auth'
+import { register, getEmailCode } from '@/api/auth'
 import { ElMessage } from 'element-plus'
 import type { FormInstance } from 'element-plus'
 
 const router = useRouter()
 const registerFormRef = ref<FormInstance>()
 const loading = ref(false)
+const isCounting = ref(false)
+const count = ref(60)
 
 const registerForm = reactive({
-  username: '',
+  username: '', // Assuming username is email based on "getEmailCode" context, or we need a separate email field?
+  // The doc says /auth/captcha/email takes "email". And register takes "username".
+  // Usually username IS the email in such systems, or there is a separate email field.
+  // The register request body in doc has "username", "password", "code".
+  // And getEmailCode takes "email".
+  // If username is not email, where do we send the code?
+  // Let's assume username IS the email for now, or add an email field if the doc implies it.
+  // Doc for register: username, password, code.
+  // Doc for getEmailCode: email.
+  // It is highly likely username = email.
   password: '',
-  confirmPassword: ''
+  confirmPassword: '',
+  code: ''
 })
 
 const validatePass2 = (rule: any, value: any, callback: any) => {
@@ -78,9 +103,42 @@ const validatePass2 = (rule: any, value: any, callback: any) => {
 }
 
 const rules = {
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  username: [
+    { required: true, message: '请输入邮箱/用户名', trigger: 'blur' },
+    { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+  ],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-  confirmPassword: [{ validator: validatePass2, trigger: 'blur' }]
+  confirmPassword: [{ validator: validatePass2, trigger: 'blur' }],
+  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
+}
+
+const handleGetCode = async () => {
+  if (!registerForm.username) {
+    ElMessage.warning('请先输入邮箱')
+    return
+  }
+  // Simple email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(registerForm.username)) {
+    ElMessage.warning('请输入正确的邮箱格式')
+    return
+  }
+
+  try {
+    await getEmailCode(registerForm.username)
+    ElMessage.success('验证码已发送')
+    isCounting.value = true
+    const timer = setInterval(() => {
+      count.value--
+      if (count.value <= 0) {
+        clearInterval(timer)
+        isCounting.value = false
+        count.value = 60
+      }
+    }, 1000)
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 const handleRegister = async () => {

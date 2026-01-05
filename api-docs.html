@@ -1,0 +1,1860 @@
+<!DOCTYPE HTML PUBLIC "-// W3C//DTD HTML 4.0 Transitional//EN">
+  <html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+      <title>导出Swagger文档到Word</title>
+      <script src="https:// cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+      <style type="text/css">
+          .knife4j-word-body{
+              width: 90%;
+              margin: 20px auto;
+              font-family:"宋体";
+              font-size: 16px;
+          }
+          .knife4j-word-row{
+              position: relative;
+              height: auto;
+              margin-right: 0;
+              margin-left: 0;
+              zoom: 1;
+              display: block;
+              box-sizing: border-box;
+          }
+          .knife4j-word-line{
+              height: 35px;
+              line-height:35px;
+          }
+          .knife4j-word-divider{
+              height: 1px;
+              background: #e8e8e8;
+              border-bottom: 1px solid #e8e8e8;
+          }
+          .knife4j-word-title{
+              font-weight: 600;
+              font-size: 18px;
+              margin-top: 15px;
+              border-left: 3px solid #00ab6d;
+          }
+          .knife4j-word-api{
+              margin-top: 10px;
+          }
+          .knife4j-word-content{
+              margin-top: 10px;
+          }
+          .knife4j-word-code-editor{
+              border: #ccc 1px solid;
+              border-left-width: 4px;
+              background-color: #fefefe;
+              box-shadow: 0 0 4px #eee;
+              word-break: break-all;
+              word-wrap: break-word;
+              color: #444;
+          }
+          .knife4j-word-code-editor .string { color: green; }        /*字符串的样式*/
+          .knife4j-word-code-editor .number { color: darkorange; }    /*数字的样式*/
+          .knife4j-word-code-editor .boolean { color: blue; }        /*布尔型数据的样式*/
+          .knife4j-word-code-editor .null { color: magenta; }        /*null值的样式*/
+          .knife4j-word-code-editor .key { color: red; }            /*key值的样式*/
+          .knife4j-word-method{
+              font-size: 14px;
+              font-weight: 600;
+              margin-right: 10px;
+              text-align: center;
+              border-radius: 3px;
+              text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+          }
+          .knife4j-word-table{
+              width: 120%;
+              border: 1px solid #c7c4c4;
+              border-collapse: collapse;
+          }
+          .knife4j-word-table tr{
+              border: 1px solid #c7c4c4;
+              height: 40px;
+          }
+          .knife4j-word-table th{
+              border: 1px solid #c7c4c4;
+              background-color: #dfdada;
+          }
+          .knife4j-word-table td{
+              border: 1px solid #c7c4c4;
+          }
+      </style>
+  </head>
+  <body>
+  <div class="knife4j-word-body">
+<h1>1.项目说明</h1>
+<div class="knife4j-word-row">
+<div class="knife4j-word-line"><strong>标题</strong>:智慧校园能耗监测与管理平台 API</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>简介</strong>:智慧校园能耗监测与管理平台 API</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>作者</strong>:<code></code></div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>HOST</strong>:http://localhost:18080</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>basePath</strong>:/</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>termsOfService</strong>:</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>联系人</strong>:</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>Version</strong>:1.0</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>GroupName</strong>:-v3-api-docs</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>分组Url</strong>:/v3/api-docs</div>
+<div class="knife4j-word-divider"></div>
+<div class="knife4j-word-line"><strong>分组Location</strong>:/v3/api-docs</div>
+<div class="knife4j-word-divider"></div>
+</div>
+
+
+<h1>2.接口列表</h1>
+<h2>2.1能耗数据管理</h2>
+
+
+
+
+<h3>2.1.1获取能耗数据 (分页)</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/energy/list</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>page</td>
+<td></td>
+<td>query</td>
+<td>false</td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+<tr>
+<td>size</td>
+<td></td>
+<td>query</td>
+<td>false</td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultIPageEnergyData</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>IPageEnergyData</td>
+<td>IPageEnergyData</td>
+</tr>
+<tr>
+<td>&nbsp;size</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;current</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;records</td>
+<td></td>
+<td>array</td>
+<td>EnergyData</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;id</td>
+<td></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;meterId</td>
+<td></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;voltage</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;current</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;power</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;totalConsumption</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;collectTime</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;total</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;pages</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> {
+		<span class="key">"size":</span> <span class="number">0</span>,
+		<span class="key">"current":</span> <span class="number">0</span>,
+		<span class="key">"records":</span> [
+			{
+				<span class="key">"id":</span> <span class="number">0</span>,
+				<span class="key">"meterId":</span> <span class="number">0</span>,
+				<span class="key">"voltage":</span> <span class="number">0</span>,
+				<span class="key">"current":</span> <span class="number">0</span>,
+				<span class="key">"power":</span> <span class="number">0</span>,
+				<span class="key">"totalConsumption":</span> <span class="number">0</span>,
+				<span class="key">"collectTime":</span> <span class="string">""</span>
+			}
+		],
+		<span class="key">"total":</span> <span class="number">0</span>,
+		<span class="key">"pages":</span> <span class="number">0</span>
+	}
+}
+</pre></div>
+</div>
+<h2>2.2设备管理</h2>
+
+
+
+
+<h3>2.2.1添加设备</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">POST</span>&nbsp;&nbsp;<code>/meter/add</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded,application/json</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+<div class="knife4j-word-title">请求示例</div>
+<div class="knife4j-word-content">
+<pre class="knife4j-word-code-editor">
+{
+  <span class="key">"id":</span> <span class="number">0</span>,
+  <span class="key">"name":</span> <span class="string">""</span>,
+  <span class="key">"sn":</span> <span class="string">""</span>,
+  <span class="key">"status":</span> <span class="string">""</span>,
+  <span class="key">"ratedPower":</span> <span class="number">0</span>,
+  <span class="key">"buildingId":</span> <span class="number">0</span>,
+  <span class="key">"roomNo":</span> <span class="string">""</span>,
+  <span class="key">"createTime":</span> <span class="string">""</span>
+}
+</pre>
+</div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>meter</td>
+<td>Meter</td>
+<td>body</td>
+<td>true</td>
+<td>Meter</td>
+<td>Meter</td>
+</tr>
+<tr>
+<td>&nbsp;id</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;name</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;sn</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;status</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;ratedPower</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;buildingId</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;roomNo</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;createTime</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string(date-time)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultBoolean</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>boolean</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> <span class="boolean">true</span>
+}
+</pre></div>
+</div>
+
+
+<h3>2.2.2获取所有设备列表</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/meter/list</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr><td colspan="6">暂无</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultListMeter</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>array</td>
+<td>Meter</td>
+</tr>
+<tr>
+<td>&nbsp;id</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;name</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;sn</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;status</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;ratedPower</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;buildingId</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;roomNo</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;createTime</td>
+<td></td>
+<td>string(date-time)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> [
+		{
+			<span class="key">"id":</span> <span class="number">0</span>,
+			<span class="key">"name":</span> <span class="string">""</span>,
+			<span class="key">"sn":</span> <span class="string">""</span>,
+			<span class="key">"status":</span> <span class="string">""</span>,
+			<span class="key">"ratedPower":</span> <span class="number">0</span>,
+			<span class="key">"buildingId":</span> <span class="number">0</span>,
+			<span class="key">"roomNo":</span> <span class="string">""</span>,
+			<span class="key">"createTime":</span> <span class="string">""</span>
+		}
+	]
+}
+</pre></div>
+</div>
+<h2>2.3认证管理</h2>
+
+
+
+
+<h3>2.3.1用户注册</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">POST</span>&nbsp;&nbsp;<code>/auth/register</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded,application/json</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+<div class="knife4j-word-title">请求示例</div>
+<div class="knife4j-word-content">
+<pre class="knife4j-word-code-editor">
+{
+  <span class="key">"username":</span> <span class="string">""</span>,
+  <span class="key">"password":</span> <span class="string">""</span>,
+  <span class="key">"code":</span> <span class="string">""</span>
+}
+</pre>
+</div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>registerRequest</td>
+<td>RegisterRequest</td>
+<td>body</td>
+<td>true</td>
+<td>RegisterRequest</td>
+<td>RegisterRequest</td>
+</tr>
+<tr>
+<td>&nbsp;username</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;password</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;code</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultString</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> <span class="string">""</span>
+}
+</pre></div>
+</div>
+
+
+<h3>2.3.2退出登录</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">POST</span>&nbsp;&nbsp;<code>/auth/logout</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>Authorization</td>
+<td></td>
+<td>header</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultString</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> <span class="string">""</span>
+}
+</pre></div>
+</div>
+
+
+<h3>2.3.3用户登录</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">POST</span>&nbsp;&nbsp;<code>/auth/login</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded,application/json</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+<div class="knife4j-word-title">请求示例</div>
+<div class="knife4j-word-content">
+<pre class="knife4j-word-code-editor">
+{
+  <span class="key">"username":</span> <span class="string">""</span>,
+  <span class="key">"password":</span> <span class="string">""</span>,
+  <span class="key">"uuid":</span> <span class="string">""</span>,
+  <span class="key">"code":</span> <span class="string">""</span>
+}
+</pre>
+</div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>loginRequest</td>
+<td>LoginRequest</td>
+<td>body</td>
+<td>true</td>
+<td>LoginRequest</td>
+<td>LoginRequest</td>
+</tr>
+<tr>
+<td>&nbsp;username</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;password</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;uuid</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;code</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultLoginResponse</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>LoginResponse</td>
+<td>LoginResponse</td>
+</tr>
+<tr>
+<td>&nbsp;token</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;username</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;role</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> {
+		<span class="key">"token":</span> <span class="string">""</span>,
+		<span class="key">"username":</span> <span class="string">""</span>,
+		<span class="key">"role":</span> <span class="string">""</span>
+	}
+}
+</pre></div>
+</div>
+
+
+<h3>2.3.4获取图形验证码</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/auth/captcha/image</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr><td colspan="6">暂无</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultCaptchaResponse</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>CaptchaResponse</td>
+<td>CaptchaResponse</td>
+</tr>
+<tr>
+<td>&nbsp;uuid</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;base64Img</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> {
+		<span class="key">"uuid":</span> <span class="string">""</span>,
+		<span class="key">"base64Img":</span> <span class="string">""</span>
+	}
+}
+</pre></div>
+</div>
+
+
+<h3>2.3.5获取邮箱验证码</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/auth/captcha/email</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>email</td>
+<td></td>
+<td>query</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultString</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> <span class="string">""</span>
+}
+</pre></div>
+</div>
+<h2>2.4告警管理</h2>
+
+
+
+
+<h3>2.4.1获取告警记录 (分页, 支持按SN查询)</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/alert/list</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>page</td>
+<td></td>
+<td>query</td>
+<td>false</td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+<tr>
+<td>size</td>
+<td></td>
+<td>query</td>
+<td>false</td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+<tr>
+<td>sn</td>
+<td></td>
+<td>query</td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultIPageAlertRecord</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>IPageAlertRecord</td>
+<td>IPageAlertRecord</td>
+</tr>
+<tr>
+<td>&nbsp;size</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;current</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;records</td>
+<td></td>
+<td>array</td>
+<td>AlertRecord</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;id</td>
+<td></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;meterId</td>
+<td></td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;alertType</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;alertValue</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;details</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;triggerTime</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;total</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;pages</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> {
+		<span class="key">"size":</span> <span class="number">0</span>,
+		<span class="key">"current":</span> <span class="number">0</span>,
+		<span class="key">"records":</span> [
+			{
+				<span class="key">"id":</span> <span class="number">0</span>,
+				<span class="key">"meterId":</span> <span class="number">0</span>,
+				<span class="key">"alertType":</span> <span class="string">""</span>,
+				<span class="key">"alertValue":</span> <span class="number">0</span>,
+				<span class="key">"details":</span> <span class="string">""</span>,
+				<span class="key">"triggerTime":</span> <span class="string">""</span>
+			}
+		],
+		<span class="key">"total":</span> <span class="number">0</span>,
+		<span class="key">"pages":</span> <span class="number">0</span>
+	}
+}
+</pre></div>
+</div>
+<h2>2.5建筑管理</h2>
+
+
+
+
+<h3>2.5.1添加建筑 (仅管理员)</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">POST</span>&nbsp;&nbsp;<code>/building/add</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded,application/json</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+<div class="knife4j-word-title">请求示例</div>
+<div class="knife4j-word-content">
+<pre class="knife4j-word-code-editor">
+{
+  <span class="key">"id":</span> <span class="number">0</span>,
+  <span class="key">"name":</span> <span class="string">""</span>,
+  <span class="key">"locationCode":</span> <span class="string">""</span>,
+  <span class="key">"totalFloors":</span> <span class="number">0</span>,
+  <span class="key">"usageType":</span> <span class="string">""</span>,
+  <span class="key">"createTime":</span> <span class="string">""</span>
+}
+</pre>
+</div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>building</td>
+<td>Building</td>
+<td>body</td>
+<td>true</td>
+<td>Building</td>
+<td>Building</td>
+</tr>
+<tr>
+<td>&nbsp;id</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;name</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;locationCode</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;totalFloors</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;usageType</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;createTime</td>
+<td></td>
+<td></td>
+<td>false</td>
+<td>string(date-time)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultBoolean</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>boolean</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> <span class="boolean">true</span>
+}
+</pre></div>
+</div>
+
+
+<h3>2.5.2获取所有建筑列表</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/building/list</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr><td colspan="6">暂无</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultListBuilding</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>array</td>
+<td>Building</td>
+</tr>
+<tr>
+<td>&nbsp;id</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;name</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;locationCode</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;totalFloors</td>
+<td></td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;usageType</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;createTime</td>
+<td></td>
+<td>string(date-time)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> [
+		{
+			<span class="key">"id":</span> <span class="number">0</span>,
+			<span class="key">"name":</span> <span class="string">""</span>,
+			<span class="key">"locationCode":</span> <span class="string">""</span>,
+			<span class="key">"totalFloors":</span> <span class="number">0</span>,
+			<span class="key">"usageType":</span> <span class="string">""</span>,
+			<span class="key">"createTime":</span> <span class="string">""</span>
+		}
+	]
+}
+</pre></div>
+</div>
+<h2>2.6统计分析接口</h2>
+
+
+
+
+<h3>2.6.1获取设备历史趋势 (默认最近10条)</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/stats/trend</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>sn</td>
+<td></td>
+<td>query</td>
+<td>true</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td></td>
+<td>query</td>
+<td>false</td>
+<td>integer(int32)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultListEnergyData</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>array</td>
+<td>EnergyData</td>
+</tr>
+<tr>
+<td>&nbsp;id</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;meterId</td>
+<td></td>
+<td>integer(int64)</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;voltage</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;current</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;power</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;totalConsumption</td>
+<td></td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;collectTime</td>
+<td></td>
+<td>string(date-time)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> [
+		{
+			<span class="key">"id":</span> <span class="number">0</span>,
+			<span class="key">"meterId":</span> <span class="number">0</span>,
+			<span class="key">"voltage":</span> <span class="number">0</span>,
+			<span class="key">"current":</span> <span class="number">0</span>,
+			<span class="key">"power":</span> <span class="number">0</span>,
+			<span class="key">"totalConsumption":</span> <span class="number">0</span>,
+			<span class="key">"collectTime":</span> <span class="string">""</span>
+		}
+	]
+}
+</pre></div>
+</div>
+
+
+<h3>2.6.2获取建筑今日用电占比</h3>
+<div class="knife4j-word-api">
+<div class="knife4j-word-title">接口地址</div>
+<div class="knife4j-word-content"><span class="knife4j-word-method">GET</span>&nbsp;&nbsp;<code>/stats/building-share</code></div>
+<div class="knife4j-word-title">接口描述</div>
+<div class="knife4j-word-content"></div>
+<div class="knife4j-word-title">请求数据类型</div>
+<div class="knife4j-word-content"><code>application/x-www-form-urlencoded</code></div>
+<div class="knife4j-word-title">响应数据类型</div>
+<div class="knife4j-word-content"><code>*/*</code></div>
+
+
+<div class="knife4j-word-title">请求参数</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>请求类型</th><th>必须</th><th>数据类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr><td colspan="6">暂无</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应状态</div><br/>
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>状态码</th><th>说明</th><th>schema</th></tr></thead>
+<tbody>
+
+
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>ResultListMapStringObject</td>
+</tr>
+</tbody>
+</table><br/>
+</div>
+
+
+<div class="knife4j-word-title">响应参数</div>
+
+
+<div class="knife4j-word-content">
+<table class="knife4j-word-table">
+<thead><tr><th>参数名称</th><th>参数说明</th><th>类型</th><th>schema</th></tr></thead>
+<tbody>
+<tr>
+<td>code</td>
+<td></td>
+<td>integer(int32)</td>
+<td>integer(int32)</td>
+</tr>
+<tr>
+<td>message</td>
+<td></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td></td>
+<td>array</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="knife4j-word-title">响应示例</div>
+<div class="knife4j-word-content"><pre class="knife4j-word-code-editor">
+{
+	<span class="key">"code":</span> <span class="number">0</span>,
+	<span class="key">"message":</span> <span class="string">""</span>,
+	<span class="key">"data":</span> []
+}
+</pre></div>
+</div>
+</div></body></html>

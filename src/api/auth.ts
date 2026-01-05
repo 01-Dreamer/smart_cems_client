@@ -15,3 +15,25 @@ export function register(data: any) {
     data
   })
 }
+
+export function logout() {
+  return request({
+    url: '/auth/logout',
+    method: 'post'
+  })
+}
+
+export function getCaptchaImage() {
+  return request({
+    url: '/auth/captcha/image',
+    method: 'get'
+  })
+}
+
+export function getEmailCode(email: string) {
+  return request({
+    url: '/auth/captcha/email',
+    method: 'get',
+    params: { email }
+  })
+}

@@ -64,6 +64,7 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { logout } from '@/api/auth'
 
 const route = useRoute()
 const router = useRouter()
@@ -71,10 +72,16 @@ const userStore = useUserStore()
 
 const activeMenu = computed(() => route.path)
 
-const handleCommand = (command: string) => {
+const handleCommand = async (command: string) => {
   if (command === 'logout') {
-    userStore.logout()
-    router.push('/login')
+    try {
+      await logout()
+    } catch (error) {
+      console.error(error)
+    } finally {
+      userStore.logout()
+      router.push('/login')
+    }
   }
 }
 </script>

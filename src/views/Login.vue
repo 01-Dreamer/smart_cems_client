@@ -29,6 +29,20 @@
               @keyup.enter="handleLogin"
             />
           </el-form-item>
+
+          <el-form-item prop="code">
+            <div style="display: flex; width: 100%; gap: 10px;">
+              <el-input 
+                v-model="loginForm.code" 
+                placeholder="验证码" 
+                prefix-icon="Key" 
+                @keyup.enter="handleLogin"
+              />
+              <div class="captcha-box" @click="refreshCaptcha">
+                <img v-if="captchaBase64" :src="captchaBase64" alt="验证码" style="width: 100px; height: 40px; cursor: pointer;" />
+              </div>
+            </div>
+          </el-form-item>
           
           <el-form-item>
             <el-button type="primary" :loading="loading" class="login-btn" @click="handleLogin">
@@ -51,10 +65,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
-import { login } from '@/api/auth'
+import { login, getCaptchaImage } from '@/api/auth'
 import { ElMessage } from 'element-plus'
 import type { FormInstance } from 'element-plus'
 
@@ -62,15 +76,29 @@ const router = useRouter()
 const userStore = useUserStore()
 const loginFormRef = ref<FormInstance>()
 const loading = ref(false)
+const captchaBase64 = ref('')
 
 const loginForm = reactive({
   username: '',
-  password: ''
+  password: '',
+  uuid: '',
+  code: ''
 })
 
 const rules = {
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
+}
+
+const refreshCaptcha = async () => {
+  try {
+    const res: any = await getCaptchaImage()
+    captchaBase64.value = res.base64Img
+    loginForm.uuid = res.uuid
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 const handleLogin = async () => {
@@ -86,12 +114,17 @@ const handleLogin = async () => {
         router.push('/')
       } catch (error) {
         console.error(error)
+        refreshCaptcha()
       } finally {
         loading.value = false
       }
     }
   })
 }
+
+onMounted(() => {
+  refreshCaptcha()
+})
 </script>
 
 <style scoped>

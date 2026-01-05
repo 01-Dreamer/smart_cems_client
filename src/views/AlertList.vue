@@ -15,6 +15,18 @@
       <el-table-column prop="details" label="详情" />
       <el-table-column prop="triggerTime" label="触发时间" />
     </el-table>
+
+    <div class="pagination-container" style="margin-top: 20px; text-align: right;">
+      <el-pagination
+        v-model:current-page="listQuery.page"
+        v-model:page-size="listQuery.size"
+        :page-sizes="[10, 20, 30, 50]"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </div>
   </div>
 </template>
 
@@ -23,8 +35,11 @@ import { ref, reactive, onMounted } from 'vue'
 import { getAlertList } from '@/api/alert'
 
 const list = ref([])
+const total = ref(0)
 const listLoading = ref(true)
 const listQuery = reactive({
+  page: 1,
+  size: 10,
   sn: ''
 })
 
@@ -32,7 +47,8 @@ const fetchData = async () => {
   listLoading.value = true
   try {
     const res: any = await getAlertList(listQuery)
-    list.value = res
+    list.value = res.records
+    total.value = res.total
   } catch (error) {
     console.error(error)
   } finally {
@@ -41,6 +57,17 @@ const fetchData = async () => {
 }
 
 const handleFilter = () => {
+  listQuery.page = 1
+  fetchData()
+}
+
+const handleSizeChange = (val: number) => {
+  listQuery.size = val
+  fetchData()
+}
+
+const handleCurrentChange = (val: number) => {
+  listQuery.page = val
   fetchData()
 }
 
