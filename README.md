@@ -1,23 +1,51 @@
-# smart_cems_client
+# 智慧校园能耗监测与管理平台 (前端)
 
-This template should help get you started developing with Vue 3 in Vite.
+## 项目简介
+本项目是“智慧校园能耗监测与管理平台”的前端部分，基于 Vue 3 + TypeScript + Vite + Element Plus + Pinia + ECharts 开发。
 
-## Recommended IDE Setup
+## 技术栈
+- **Vue 3**: 核心框架
+- **TypeScript**: 静态类型检查
+- **Vite**: 构建工具
+- **Element Plus**: UI 组件库
+- **Pinia**: 状态管理
+- **Vue Router**: 路由管理
+- **Axios**: HTTP 请求库
+- **ECharts**: 图表库
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 功能模块
+1. **用户认证**: 登录、注册 (JWT)
+2. **建筑管理**: 建筑列表、添加建筑
+3. **设备管理**: 设备列表、添加设备
+4. **实时监控**: 查看设备实时能耗数据
+5. **告警记录**: 查看历史告警信息
+6. **统计分析**: 设备功率趋势图、建筑用电占比图
 
-## Recommended Browser Setup
+## 快速开始
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### 安装依赖
+```sh
+npm install
+```
 
-## Type Support for `.vue` Imports in TS
+### 启动开发服务器
+```sh
+npm run dev
+```
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 构建生产版本
+```sh
+npm run build
+```
+
+## 目录结构
+- `src/api`: API 接口定义
+- `src/layout`: 布局组件
+- `src/router`: 路由配置
+- `src/stores`: Pinia 状态管理
+- `src/utils`: 工具函数 (如 Axios 封装)
+- `src/views`: 页面视图
+
 
 ## Customize configuration
 
