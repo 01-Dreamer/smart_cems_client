@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout-container">
-    <el-aside width="200px">
+    <el-aside width="220px" class="aside-container">
       <el-menu
         :default-active="activeMenu"
         class="el-menu-vertical"
@@ -10,7 +10,8 @@
         active-text-color="#409EFF"
       >
         <div class="logo">
-          <span>能耗管理平台</span>
+          <el-icon class="logo-icon"><ElementPlus /></el-icon>
+          <span>智慧能耗云平台</span>
         </div>
         <el-menu-item index="/dashboard">
           <el-icon><DataLine /></el-icon>
@@ -37,24 +38,34 @@
     <el-container>
       <el-header class="header">
         <div class="header-left">
-          <!-- 面包屑或其他 -->
+          <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item>{{ route.meta.title }}</el-breadcrumb-item>
+          </el-breadcrumb>
         </div>
         <div class="header-right">
-          <el-dropdown @command="handleCommand">
-            <span class="el-dropdown-link">
-              {{ userStore.username }}
-              <el-icon class="el-icon--right"><arrow-down /></el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item command="logout">退出登录</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+          <div class="avatar-wrapper">
+            <el-avatar :size="30" icon="UserFilled" style="margin-right: 8px; background-color: #409EFF;" />
+            <el-dropdown @command="handleCommand">
+              <span class="el-dropdown-link">
+                {{ userStore.username }}
+                <el-icon class="el-icon--right"><arrow-down /></el-icon>
+              </span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </div>
         </div>
       </el-header>
-      <el-main>
-        <router-view />
+      <el-main class="main-content">
+        <router-view v-slot="{ Component }">
+          <transition name="fade-transform" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -90,6 +101,11 @@ const handleCommand = async (command: string) => {
 .layout-container {
   height: 100vh;
 }
+.aside-container {
+  background-color: #304156;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  z-index: 10;
+}
 .el-menu-vertical {
   height: 100%;
   border-right: none;
@@ -97,23 +113,62 @@ const handleCommand = async (command: string) => {
 .logo {
   height: 60px;
   line-height: 60px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   background-color: #2b3649;
+  overflow: hidden;
+}
+.logo-icon {
+  margin-right: 10px;
+  font-size: 24px;
+  color: #409EFF;
 }
 .header {
   background-color: #fff;
-  border-bottom: 1px solid #dcdfe6;
+  height: 60px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  z-index: 9;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+}
+.avatar-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 .el-dropdown-link {
   cursor: pointer;
   display: flex;
   align-items: center;
+  font-weight: 500;
+}
+.main-content {
+  background-color: #f0f2f5;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* 页面切换动画 */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

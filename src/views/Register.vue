@@ -77,16 +77,7 @@ const isCounting = ref(false)
 const count = ref(60)
 
 const registerForm = reactive({
-  username: '', // Assuming username is email based on "getEmailCode" context, or we need a separate email field?
-  // The doc says /auth/captcha/email takes "email". And register takes "username".
-  // Usually username IS the email in such systems, or there is a separate email field.
-  // The register request body in doc has "username", "password", "code".
-  // And getEmailCode takes "email".
-  // If username is not email, where do we send the code?
-  // Let's assume username IS the email for now, or add an email field if the doc implies it.
-  // Doc for register: username, password, code.
-  // Doc for getEmailCode: email.
-  // It is highly likely username = email.
+  username: '', // 用户名即邮箱
   password: '',
   confirmPassword: '',
   code: ''

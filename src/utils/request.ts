@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '../stores/user'
 
 const service = axios.create({
   baseURL: 'http://localhost:18080', // 根据文档 HOST

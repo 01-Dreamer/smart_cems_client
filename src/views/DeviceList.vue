@@ -16,7 +16,11 @@
       <el-table-column prop="ratedPower" label="额定功率(W)" />
       <el-table-column prop="buildingId" label="所属建筑ID" />
       <el-table-column prop="roomNo" label="房间号" />
-      <el-table-column prop="createTime" label="创建时间" />
+      <el-table-column prop="createTime" label="创建时间">
+        <template #default="{ row }">
+          {{ formatDate(row.createTime) }}
+        </template>
+      </el-table-column>
     </el-table>
 
     <el-dialog :title="textMap[dialogStatus]" v-model="dialogFormVisible">
@@ -82,6 +86,11 @@ const rules = {
 }
 
 const dataForm = ref()
+
+const formatDate = (val: string) => {
+  if (!val) return ''
+  return val.replace('T', ' ').split('.')[0]
+}
 
 const fetchData = async () => {
   listLoading.value = true

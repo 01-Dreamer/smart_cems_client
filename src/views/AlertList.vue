@@ -13,7 +13,11 @@
       <el-table-column prop="alertType" label="告警类型" />
       <el-table-column prop="alertValue" label="告警数值" />
       <el-table-column prop="details" label="详情" />
-      <el-table-column prop="triggerTime" label="触发时间" />
+      <el-table-column prop="triggerTime" label="触发时间">
+        <template #default="{ row }">
+          {{ formatDate(row.triggerTime) }}
+        </template>
+      </el-table-column>
     </el-table>
 
     <div class="pagination-container" style="margin-top: 20px; text-align: right;">
@@ -42,6 +46,11 @@ const listQuery = reactive({
   size: 10,
   sn: ''
 })
+
+const formatDate = (val: string) => {
+  if (!val) return ''
+  return val.replace('T', ' ').split('.')[0]
+}
 
 const fetchData = async () => {
   listLoading.value = true

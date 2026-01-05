@@ -18,7 +18,11 @@
       <el-table-column prop="current" label="电流(A)" />
       <el-table-column prop="power" label="功率(W)" />
       <el-table-column prop="totalConsumption" label="累计用电量(kWh)" />
-      <el-table-column prop="collectTime" label="采集时间" />
+      <el-table-column prop="collectTime" label="采集时间">
+        <template #default="{ row }">
+          {{ formatDate(row.collectTime) }}
+        </template>
+      </el-table-column>
     </el-table>
 
     <div class="pagination-container" style="margin-top: 20px; text-align: right;">
@@ -47,6 +51,11 @@ const listQuery = reactive({
   size: 10
 })
 let timer: any = null
+
+const formatDate = (val: string) => {
+  if (!val) return ''
+  return val.replace('T', ' ').split('.')[0]
+}
 
 const fetchData = async () => {
   // 首次加载显示loading，轮询时不显示
