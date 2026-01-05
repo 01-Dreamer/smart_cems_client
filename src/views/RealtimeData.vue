@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="filter-container">
       <el-alert
-        title="数据每5秒自动刷新"
+        title="数据自动刷新中"
         type="success"
         :closable="false"
         show-icon

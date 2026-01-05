@@ -21,11 +21,6 @@
                 <span>设备历史趋势</span>
               </div>
               <div class="header-actions">
-                <transition name="fade">
-                  <el-tag v-if="trendSn" type="success" effect="dark" size="small" style="margin-right: 10px;">
-                    <el-icon class="is-loading"><Loading /></el-icon> 实时监控中
-                  </el-tag>
-                </transition>
                 <el-input 
                   v-model="trendSn" 
                   placeholder="输入设备SN查询" 
@@ -83,28 +78,6 @@
             </div>
           </template>
           <div id="shareChart" style="height: 350px;"></div>
-        </el-card>
-        
-        <!-- 可以在这里加一些统计卡片 -->
-        <el-card class="box-card" shadow="hover" style="margin-top: 20px;">
-          <template #header>
-            <div class="card-header">
-              <div class="header-title">
-                <el-icon><InfoFilled /></el-icon>
-                <span>系统公告</span>
-              </div>
-            </div>
-          </template>
-          <div class="notice-list">
-            <div class="notice-item">
-              <span class="notice-tag">通知</span>
-              <span class="notice-content">系统将于今晚进行例行维护。</span>
-            </div>
-            <div class="notice-item">
-              <span class="notice-tag warning">警告</span>
-              <span class="notice-content">请注意检查设备连接状态。</span>
-            </div>
-          </div>
         </el-card>
       </el-col>
     </el-row>
