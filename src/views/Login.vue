@@ -6,7 +6,6 @@
           <el-icon class="logo-icon" :size="48"><DataLine /></el-icon>
         </div>
         <h1 class="title">智慧校园能耗监测平台</h1>
-        <p class="subtitle">Smart Campus Energy Management System</p>
       </div>
       
       <el-card class="login-card" shadow="hover">
@@ -31,15 +30,16 @@
           </el-form-item>
 
           <el-form-item prop="code">
-            <div style="display: flex; width: 100%; gap: 10px;">
+            <div style="display: flex; width: 100%; gap: 10px; align-items: center;">
               <el-input 
                 v-model="loginForm.code" 
                 placeholder="验证码" 
                 prefix-icon="Key" 
                 @keyup.enter="handleLogin"
+                style="flex: 1;"
               />
-              <div class="captcha-box" @click="refreshCaptcha">
-                <img v-if="captchaBase64" :src="captchaBase64" alt="验证码" style="width: 100px; height: 40px; cursor: pointer;" />
+              <div class="captcha-box" @click="refreshCaptcha" style="line-height: 0;">
+                <img v-if="captchaBase64" :src="captchaBase64" alt="验证码" style="width: 110px; height: 40px; border-radius: 4px; border: 1px solid #dcdfe6; box-sizing: border-box; cursor: pointer;" />
               </div>
             </div>
           </el-form-item>
@@ -56,10 +56,6 @@
           </div>
         </el-form>
       </el-card>
-      
-      <div class="footer-copyright">
-        &copy; 2026 Smart Campus System. All Rights Reserved.
-      </div>
     </div>
   </div>
 </template>
@@ -187,14 +183,6 @@ onMounted(() => {
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.subtitle {
-  font-size: 14px;
-  opacity: 0.8;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
 .login-card {
   width: 100%;
   border-radius: 16px;
@@ -240,11 +228,5 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   gap: 5px;
-}
-
-.footer-copyright {
-  margin-top: 40px;
-  color: rgba(255,255,255,0.5);
-  font-size: 12px;
 }
 </style>
